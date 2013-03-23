@@ -333,6 +333,7 @@ public abstract class ChatRoom extends BackgroundPanel implements ActionListener
         chatEditorKeyListener = new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
                 checkForEnter(e);
+                checkForTab(e);
             }
         };
 
@@ -711,6 +712,18 @@ public abstract class ChatRoom extends BackgroundPanel implements ActionListener
             catch (BadLocationException badLoc) {
                 Log.error("Error when checking for enter:", badLoc);
             }
+        }
+    }
+    
+    /**
+     * Checks to see if enter was pressed and validates room.
+     *
+     * @param e the KeyEvent
+     */
+    private void checkForTab(KeyEvent e) {
+        final KeyStroke keyStroke = KeyStroke.getKeyStroke(e.getKeyCode(), e.getModifiers());
+        if (e.getKeyChar() == KeyEvent.VK_TAB) {
+            e.consume();
         }
     }
 

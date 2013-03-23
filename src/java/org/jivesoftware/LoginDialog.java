@@ -515,6 +515,8 @@ public class LoginDialog {
 
             // Load previous instances
             String userProp = localPref.getLastUsername();
+            if(userProp == null || userProp.length() == 0)
+		userProp = System.getProperty("user.name");
             String serverProp = localPref.getServer();
 
            File file = new File(Spark.getSparkUserHome(), "/user/");
